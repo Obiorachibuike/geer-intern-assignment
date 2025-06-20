@@ -1,8 +1,4 @@
-Here's a professional and clear `README.md` file for your project:
 
----
-
-```markdown
 # 🛒 ElectroShop – Product Catalog with Next.js
 
 Welcome to **ElectroShop**, a modern e-commerce-style product listing application built using **Next.js 14 App Router**, **TypeScript**, and **Tailwind CSS**. Users can browse products, filter by category, view detailed product pages, and add new products via a form.

@@ -7,7 +7,7 @@ export interface Product {
 }
 
 export let products: Product[] = [
- {
+  {
     id: '1',
     name: 'MacBook Pro 16” M2',
     price: 2499,
@@ -15,6 +15,7 @@ export let products: Product[] = [
     category: 'Laptop',
     description: 'Powerful performance with the M2 chip and stunning Liquid Retina XDR display.'
   },
+  
   {
     id: '2',
     name: 'iPhone 14 Pro',
@@ -23,6 +24,7 @@ export let products: Product[] = [
     category: 'Smartphone',
     description: 'Dynamic Island, Always-On display, and groundbreaking safety features.'
   },
+  
   {
     id: '3',
     name: 'AirPods Pro (2nd Gen)',
@@ -31,6 +33,7 @@ export let products: Product[] = [
     category: 'Audio',
     description: 'Re-engineered for richer audio experience, with up to 2x more Active Noise Cancellation.'
   },
+  
   {
     id: '4',
     name: 'Apple Watch Series 9',
@@ -39,6 +42,7 @@ export let products: Product[] = [
     category: 'Wearable',
     description: 'Smarter, brighter, mightier. With Double Tap gesture and precision finding for iPhone.'
   },
+  
   {
     id: '5',
     name: 'iPad Pro 11” M2',
@@ -47,6 +51,7 @@ export let products: Product[] = [
     category: 'Tablet',
     description: 'Unbelievable performance with the M2 chip, next-level Apple Pencil experience, and superfast Wi-Fi.'
   },
+  
   {
     id: '6',
     name: 'Apple Magic Keyboard',
@@ -55,6 +60,7 @@ export let products: Product[] = [
     category: 'Accessory',
     description: 'A comfortable and precise typing experience with a remarkably long-lasting internal battery.'
   },
+  
   {
     id: '7',
     name: 'Apple Studio Display',
@@ -63,6 +69,7 @@ export let products: Product[] = [
     category: 'Display',
     description: 'A brilliant 27-inch 5K Retina display, 12MP Ultra Wide camera with Center Stage, and incredible six-speaker sound system.'
   },
+  
   {
     id: '8',
     name: 'Apple TV 4K',
@@ -71,6 +78,7 @@ export let products: Product[] = [
     category: 'Streaming',
     description: 'The best of TV, films, sports, and live news, with groundbreaking new features.'
   },
+  
   {
     id: '9',
     name: 'AirTag (4 Pack)',
@@ -79,6 +87,7 @@ export let products: Product[] = [
     category: 'Tracker',
     description: 'Keep track of your keys, wallet, luggage, backpack, and more. Find them with Precision Finding.'
   },
+  
   {
     id: '10',
     name: 'HomePod Mini',

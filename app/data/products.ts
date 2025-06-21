@@ -1,9 +1,13 @@
+
+
+
 export interface Product {
   id: string;
   name: string;
   price: number;
+  category: string;
   imageUrl: string;
-  category?: string; // optional, in case you want to add filtering later
+  description?: string; // <- Add this
 }
 
 export let products: Product[] = [

@@ -4,7 +4,7 @@ import useInView from '../hooks/useInView';
 
 // types/Product.ts
 export interface Product {
-  id: string;
+  id: string | number;
   name: string;
   description?: string;
   price: number;

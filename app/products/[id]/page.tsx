@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import useInView from '../../hooks/useInView'; // Adjust path as needed
 
 interface Product {
   id: string;
@@ -18,7 +17,7 @@ export default function ProductDetail() {
   const { id } = useParams() as { id: string };
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
-  const { ref, isVisible } = useInView();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -36,6 +35,11 @@ export default function ProductDetail() {
 
     if (id) fetchProduct();
   }, [id]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 100); // animation delay
+    return () => clearTimeout(timer);
+  }, []);
 
   if (loading) {
     return (
@@ -59,7 +63,6 @@ export default function ProductDetail() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 p-6 sm:p-10 md:p-12 font-sans">
       <div
-        ref={ref}
         className={`max-w-4xl mx-auto bg-white/80 backdrop-blur-sm border border-indigo-200 rounded-3xl shadow-2xl overflow-hidden transition-all duration-700 ease-out transform ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}

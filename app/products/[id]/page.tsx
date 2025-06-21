@@ -1,18 +1,27 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
-import  Product from '../../data/products';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import useInView from '../../hooks/useInView';
 
+// ✅ Hardcoded Product type
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  imageUrl: string;
+  category: string;
+  description?: string;
+}
+
 interface Props {
-  params: Promise<{
+  params: {
     id: string;
-  }>;
+  };
 }
 
 export default function ProductDetail({ params }: Props) {
-  const { id } = use(params);
+  const { id } = params;
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const { ref, isVisible } = useInView();
@@ -60,19 +69,19 @@ export default function ProductDetail({ params }: Props) {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
-        {/* Product Image with Zoom on Hover */}
         <div className="w-full aspect-[3/2] overflow-hidden group">
           <img
             src={product.imageUrl}
             alt={product.name}
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-110"
             onError={(e) => {
-              e.currentTarget.src = 'https://placehold.co/800x400?text=Image+Not+Available';
+              const target = e.target as HTMLImageElement;
+              target.onerror = null;
+              target.src = 'https://placehold.co/800x400?text=Image+Not+Available';
             }}
           />
         </div>
 
-        {/* Product Info */}
         <div className="p-8">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">
             {product.name}
@@ -84,14 +93,12 @@ export default function ProductDetail({ params }: Props) {
         </div>
       </div>
 
-      {/* Back to Products Button */}
       <Link href="/products" className="block text-center mt-8">
         <span className="inline-block bg-indigo-600 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-indigo-700 hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-indigo-300 text-base sm:text-lg">
           ← Back to Products
         </span>
       </Link>
 
-      {/* Footer */}
       <footer className="mt-20 text-center text-gray-600 text-sm font-light">
         <p>&copy; {new Date().getFullYear()} ElectroShop. All rights reserved.</p>
       </footer>

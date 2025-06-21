@@ -1,4 +1,4 @@
-import products, { Product } from '../../data/products';
+import { products, Product } from '../../data/products';
 import { v4 as uuidv4 } from 'uuid';
 
 export async function GET() {

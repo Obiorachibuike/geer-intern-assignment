@@ -2,6 +2,18 @@
 import Link from 'next/link';
 import useInView from '../hooks/useInView';
 
+// types/Product.ts
+export interface Product {
+  id: string;
+  name: string;
+  description?: string;
+  price: number;
+  category: string;
+  imageUrl: string;
+}
+
+
+
 interface ProductCardProps {
   product: Product;
 }

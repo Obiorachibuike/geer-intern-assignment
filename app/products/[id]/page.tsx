@@ -1,10 +1,7 @@
-'use client';
-
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useInView from '../../hooks/useInView';
+import useInView from '../../../hooks/useInView'; // adjust the path as needed
 
-// ✅ Hardcoded Product type
 interface Product {
   id: string;
   name: string;
@@ -14,11 +11,14 @@ interface Product {
   description?: string;
 }
 
-export default function ProductDetail({
-  params,
-}: {
-  params: { id: string };
-}) {
+// ✅ Correct type for `params` in App Router
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function ProductDetail({ params }: PageProps) {
   const { id } = params;
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -28,6 +28,7 @@ export default function ProductDetail({
     const fetchProduct = async () => {
       try {
         const res = await fetch(`/api/products/${id}`);
+        if (!res.ok) throw new Error('Product fetch failed');
         const data = await res.json();
         setProduct(data);
       } catch (err) {

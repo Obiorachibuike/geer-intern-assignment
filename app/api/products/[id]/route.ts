@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import products from '../../../data/products'; // Adjust path as needed
+import {products} from '../../../data/products'; // Adjust path as needed
 
 // GET /api/products/:id
 export async function GET(req: NextRequest) {

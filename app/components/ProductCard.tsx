@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { Product } from '../types/Product';
 import useInView from '../hooks/useInView';
 
 interface ProductCardProps {

@@ -10,7 +10,7 @@ export interface Product {
   description?: string; // <- Add this
 }
 
-export let products: Product[] = [
+ let products: Product[] = [
   {
     id: '1',
     name: 'MacBook Pro 16” M2',
@@ -101,3 +101,6 @@ export let products: Product[] = [
     description: 'Small but mighty, HomePod mini delivers room-filling sound, intelligent assistant, and smart home control.'
   },
 ];
+
+
+export default products

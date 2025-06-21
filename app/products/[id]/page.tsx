@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import useInView from '../../hooks/useInView'; // Adjust path as needed
 
@@ -13,13 +14,8 @@ interface Product {
   description?: string;
 }
 
-// ✅ Correct props typing in App Router
-export default function ProductDetail({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { id } = params;
+export default function ProductDetail() {
+  const { id } = useParams() as { id: string };
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const { ref, isVisible } = useInView();
@@ -38,7 +34,7 @@ export default function ProductDetail({
       }
     };
 
-    fetchProduct();
+    if (id) fetchProduct();
   }, [id]);
 
   if (loading) {

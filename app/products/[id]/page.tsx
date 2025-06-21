@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useInView from '../../../hooks/useInView'; // adjust the path as needed
+import useInView from '../../../hooks/useInView'; // Adjust path as needed
 
 interface Product {
   id: string;
@@ -11,14 +13,12 @@ interface Product {
   description?: string;
 }
 
-// ✅ Correct type for `params` in App Router
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function ProductDetail({ params }: PageProps) {
+// ✅ Correct props typing in App Router
+export default function ProductDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
@@ -31,7 +31,7 @@ export default function ProductDetail({ params }: PageProps) {
         if (!res.ok) throw new Error('Product fetch failed');
         const data = await res.json();
         setProduct(data);
-      } catch (err) {
+      } catch {
         setProduct(null);
       } finally {
         setLoading(false);
@@ -52,7 +52,7 @@ export default function ProductDetail({ params }: PageProps) {
     );
   }
 
-  if (!product || !product.name) {
+  if (!product) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-100 p-6 font-sans">
         <p className="text-lg text-red-600 font-semibold">❌ Product not found</p>

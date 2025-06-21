@@ -7,13 +7,20 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { name, price, imageUrl }: Partial<Product> = body;
+  const { name, price, imageUrl, category }: Partial<Product> = body;
 
-  if (!name || !price || !imageUrl) {
+  if (!name || !price || !imageUrl || !category) {
     return new Response('Missing fields', { status: 400 });
   }
 
-  const newProduct: Product = { id: uuidv4(), name, price, imageUrl };
+  const newProduct: Product = {
+    id: uuidv4(),
+    name,
+    price,
+    imageUrl,
+    category,
+  };
+
   products.push(newProduct);
   return Response.json(newProduct);
 }

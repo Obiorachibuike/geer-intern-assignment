@@ -10,7 +10,7 @@ export interface Product {
   description?: string; // <- Add this
 }
 
- let products: Product[] = [
+ export products: Product[] = [
   {
     id: '1',
     name: 'MacBook Pro 16” M2',
@@ -103,4 +103,3 @@ export interface Product {
 ];
 
 
-export default products

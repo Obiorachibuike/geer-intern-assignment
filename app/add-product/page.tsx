@@ -10,6 +10,7 @@ export default function AddProductPage() {
     price: '',
     imageUrl: '',
     category: '',
+    description: '',
   });
 
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function AddProductPage() {
   const [useUpload, setUseUpload] = useState(false);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
@@ -54,6 +55,7 @@ export default function AddProductPage() {
         price: '',
         imageUrl: '',
         category: '',
+        description: '',
       });
       setImageFile(null);
       setTimeout(() => router.push('/products'), 1500);
@@ -83,7 +85,7 @@ export default function AddProductPage() {
               type="text"
               placeholder="e.g. iPhone 14 Pro"
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500"
-              value={formData.name || ''}
+              value={formData.name}
               onChange={handleChange}
               required
             />
@@ -96,7 +98,7 @@ export default function AddProductPage() {
               type="number"
               placeholder="e.g. 999"
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500"
-              value={formData.price || ''}
+              value={formData.price}
               onChange={handleChange}
               required
             />
@@ -143,7 +145,7 @@ export default function AddProductPage() {
                 type="url"
                 placeholder="https://example.com/image.jpg"
                 className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500"
-                value={formData.imageUrl || ''}
+                value={formData.imageUrl}
                 onChange={handleChange}
                 required
               />
@@ -162,10 +164,22 @@ export default function AddProductPage() {
           )}
 
           <div>
+            <label className="block text-gray-700 mb-1">Description</label>
+            <textarea
+              name="description"
+              placeholder="Write a short description..."
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500 resize-none"
+              value={formData.description}
+              onChange={handleChange}
+              rows={4}
+            ></textarea>
+          </div>
+
+          <div>
             <label className="block text-gray-700 mb-1">Category</label>
             <select
               name="category"
-              value={formData.category || ''}
+              value={formData.category}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-indigo-500"
               required

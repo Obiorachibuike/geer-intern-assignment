@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useInView from '../../hooks/useInView';
+import useInView from '../../../hooks/useInView';
 
 // ✅ Hardcoded Product type
 interface Product {
@@ -14,13 +14,11 @@ interface Product {
   description?: string;
 }
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
-
-export default function ProductDetail({ params }: Props) {
+export default function ProductDetail({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);

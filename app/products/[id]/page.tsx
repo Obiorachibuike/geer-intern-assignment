@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import useInView from '../../../hooks/useInView'; // Adjust path as needed
+import useInView from '../../hooks/useInView'; // Adjust path as needed
 
 interface Product {
   id: string;
